@@ -27,12 +27,3 @@ html,body {
   font-family: 'Poppins', sans-serif;
   background-color: #fff;
 }
-
-button {
-  color: white;
-}
-
-input {
-  border: .1rem;
-  background-color: #fff;
-}

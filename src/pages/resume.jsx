@@ -2,13 +2,40 @@ import { useState } from "react";
 // for Tag Input
 import { TagsInput } from "react-tag-input-component";
 
+// keywords extractor
+// import Keyw, { keywds } from './components/components/resume/kextractor';
+import keyword_extractor from 'keyword-extractor';
+
 
 export default function Resume() {
   const [rdoc, setrdoc] = useState([]);
   const [email, setEmail] = useState("");
   const [response, setResponse] = useState(null);
-  const [keywords_received, setKeywords_received] = useState(["tag"]);
+  const [jobTitle, setJobTitle] = useState('');
+  const [keywds, setKeywds] = useState([]);
+  const [keywords_received, setKeywords_received] = useState(keywds);
   console.log(keywords_received, typeof (keywords_received))
+  
+  // keywords generator
+  const handleInputChange = (event) => {
+    setJobTitle(event.target.value);
+  };
+
+  const handleKeywds = (event) => {
+    event.preventDefault();
+    const extractedKeywds = keyword_extractor.extract(jobTitle, {
+      language: 'english',
+      remove_digits: true,
+      return_changed_case: true,
+      remove_duplicates: true,
+      return_max_ngrams: 3,
+    });
+    // setKeywds(extractedKeywds);
+    // console.log(keywds)
+    setKeywords_received(extractedKeywds)
+  };
+
+  // Ending keywords generator
 
   const handleTagChange = (newTags) => {
     // Filter out unwanted characters
@@ -69,11 +96,11 @@ export default function Resume() {
 
   return (
     <section className="flex justify-center items-center my-16 xl:px-52 lg:px-32 md:px-16 sm:px-10">
-      <div className="card w-full bg-slate-50 shadow-xl">
+      <div className="card w-full bg-slate-50 shadow-2xl backdrop-filter backdrop-blur-lg bg-opacity-30 firefox:bg-opacity-90">
         <form onSubmit={handleSubmit} className="card-body">
           <div className="my-3">
             <label htmlFor="email" className="input-group input-group-vertical text-black">Email</label>
-            <input className="input input-bordered input-error w-full max-w-xs bg-slate-300 text-black"
+            <input className="input input-bordered w-full max-w-xs text-black"
               type="email"
               id="email"
               name="email"
@@ -81,6 +108,13 @@ export default function Resume() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+          </div>
+          <div className="my-3">
+            <label className="input-group input-group-vertical text-black">
+            Job Description:
+              <textarea type="text" value={jobTitle} onChange={handleInputChange} className="textarea  textarea-bordered min-h-[7rem]" />
+            </label>
+            <button onClick={handleKeywds} className="btn mt-3">Extract Keywords</button>
           </div>
           <div className="my-3">
             <label htmlFor="keywords_received" className="input-group input-group-vertical text-black">Add tags here by pressing enter</label>
@@ -105,23 +139,10 @@ export default function Resume() {
             <label htmlFor="rdoc" className="input-group input-group-vertical text-black">Upload Resume Here</label>
             <input className="file-input file-input-bordered w-full max-w-xs" type="file" id="rdoc" name="rdoc" required multiple onChange={handleFileChange} />
           </div>
-          <button type="submit" className="btn-primary btn-xs sm:btn-sm md:btn-md lg:btn-lg" htmlFor="my-modal-6">Start Analysis</button>
+          <button type="submit" className="btn btn-primary  btn-active btn-xs sm:btn-sm md:btn-md lg:btn-lg" htmlFor="my-modal-6">Start Analysis</button>
 
         </form>
         {response && <div dangerouslySetInnerHTML={{ __html: convertToHTML(response) }} />}
-      </div>
-
-      {/* Modal Fuction onClick */}
-      {/* Put this part before </body> tag */}
-      <input type="checkbox" id="my-modal-6" className="modal-toggle" />
-      <div className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">Congratulations random Internet user!</h3>
-          <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-          <div className="modal-action">
-            <label htmlFor="my-modal-6" className="btn">Yay!</label>
-          </div>
-        </div>
       </div>
     </section>
   );
