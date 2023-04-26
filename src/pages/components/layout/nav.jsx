@@ -1,6 +1,6 @@
 export default function Nav() {
     return (
-        <div className="navbar sticky top-0 z-10 bg-white  backdrop-filter backdrop-blur-lg bg-opacity-30 firefox:bg-opacity-90">
+        <nav className="navbar sticky top-0 z-10 bg-white  backdrop-filter backdrop-blur-lg bg-opacity-30 firefox:bg-opacity-90">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -42,6 +42,6 @@ export default function Nav() {
             <div className="navbar-end">
                 <a className="btn">Get started</a>
             </div>
-        </div>
+        </nav>
     )
 }
