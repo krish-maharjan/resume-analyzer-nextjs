@@ -3,7 +3,7 @@ import Image from 'next/image'
 export default function Intro() {
     return (
         <section className="flex flex-row w-full">
-            <div className="flex min-h-screen min-w-full place-items-start">
+            <div className="flex min-h-screen min-w-full justify-center items-start">
                 <div className="flex flex-col lg:flex-row-reverse items-center">
                     <div className="w-[50%]">
                         <Image src="/image/4.png" alt="image" width={745} height={855} className="w-full h-auto object-cover" />
