@@ -29,5 +29,22 @@ html,body {
 }
 
 section {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+
   margin-bottom: 3rem;
+}
+
+section > .shead {
+  margin-bottom: 1.5rem;
+}
+
+section > .shead > * {
+  text-align: center;
+}
+
+h2 {
+  font-size: 2.5rem;
 }

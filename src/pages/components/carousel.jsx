@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import { useState } from "react"
 
 export default function Carousel() {
     const slides = {
@@ -26,21 +26,37 @@ export default function Carousel() {
         8: [
             {'img': '/image/4.png'},
         ],
-        
     }
+
+    const [index, setIndex] = useState('');
+    const length = 3;
+
+    const handelPrevious = () => {
+        const newIndex = index -1;
+        setIndex(newIndex < 0 ? length - 1 : newIndex);
+    };
+
+    const handelNext = () => {
+        const newIndex = index + 1;
+        setIndex(newIndex >= length ? 0 : newIndex)
+    };
 
     return(
         <section className='relative'>
+            <div className="shead">
+                <h2>Our Work</h2>
+                <p>Here are some work we've done</p>
+            </div>
             {Object.entries(slides).map(([key, values]) => (
                 <div className="absolute right-0">
-                    <a href={key - 4} className="btn btn-circle">❮</a> 
-                    <a href={key + 4} className="btn btn-circle">❯</a>
+                    <button onClick={handelPrevious} className="btn btn-circle">❮</button> 
+                    <button onClick={handelNext} className="btn btn-circle">❯</button>
                 </div>
             ))}
 
             <div className="carousel carousel-center rounded-box">
                 {Object.entries(slides).map(([key, values]) => (
-                    <div className="carousel-item max-w-[25%]" id={key} >
+                    <div className="carousel-item max-w-[25%]" index={key} >
                         <img src={values[0].img} alt="Resume Analyzer" className="w-full h-auto object-cover" />
                     </div> 
                 ))}
