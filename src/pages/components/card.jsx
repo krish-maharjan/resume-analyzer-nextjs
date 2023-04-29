@@ -23,15 +23,15 @@ export default function Card() {
     }
     
     return(
-        <section>
+        <section className="px-14">
             <div className="shead">
                 <h2>Our Services</h2>
                 <p>Checkout the services we provide</p>
             </div>
 
-            <div className="flex flex-col lg:flex-row gap-11 ">
+            <div className="flex flex-row flex-wrap items-center justify-center gap-11 ">
                 {Object.entries(cards).map(([key, values]) => (
-                    <div className="card w-80 h-80 2xl:w-96 bg-base-100 shadow-xl">
+                    <div className="card w-72 h-80 2xl:w-96 bg-base-100 shadow-xl">
                         <figure><img src={values[2].img} alt={values[3].alttxt} /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{values[0].title}</h2>

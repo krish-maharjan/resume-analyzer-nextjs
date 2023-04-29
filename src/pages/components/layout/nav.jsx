@@ -1,6 +1,39 @@
+import { useEffect, useState } from "react";
+
 export default function Nav() {
+    const [clientWindowHeight, setClientWindowHeight] = useState("");
+
+    const [backgroundTransparacy, setBackgroundTransparacy] = useState(0);
+    const [padding, setPadding] = useState(15);
+    const [boxShadow, setBoxShadow] = useState(0);
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    });
+
+    const handleScroll = () => {
+        setClientWindowHeight(window.scrollY);
+    };
+
+    useEffect(() => {
+        let backgroundTransparacyVar = clientWindowHeight / 600;
+
+        if (backgroundTransparacyVar < 1) {
+            let paddingVar = 30 - backgroundTransparacyVar * 20;
+            let boxShadowVar = backgroundTransparacyVar * 0.1;
+            setBackgroundTransparacy(backgroundTransparacyVar);
+            setPadding(paddingVar);
+            setBoxShadow(boxShadowVar);
+        }
+    }, [clientWindowHeight]);
+
     return (
-        <nav className="navbar sticky top-0 z-10 bg-white  backdrop-filter backdrop-blur-lg bg-opacity-30 firefox:bg-opacity-90">
+        <nav className="navbar fixed top-0 z-10" style={{
+            background: `rgba(255, 255, 255, ${backgroundTransparacy})`,
+            padding: `${padding}px 0px`,
+            boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
+          }}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -40,7 +73,7 @@ export default function Nav() {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Get started</a>
+                <a className="btn btn-primary">Get started</a>
             </div>
         </nav>
     )

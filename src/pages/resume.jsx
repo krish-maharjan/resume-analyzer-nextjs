@@ -5,9 +5,6 @@ import { TagsInput } from "react-tag-input-component";
 // keywords extractor
 import keyword_extractor from 'keyword-extractor';
 
-// Lodaing
-import { Modal, Spinner } from 'daisyui';
-
 
 export default function Resume() {
   const [rdoc, setrdoc] = useState([]);

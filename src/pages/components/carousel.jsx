@@ -42,7 +42,7 @@ export default function Carousel() {
     };
 
     return(
-        <section className='relative'>
+        <section className='relative px-10'>
             <div className="shead">
                 <h2>Our Work</h2>
                 <p>Here are some work we've done</p>

@@ -7,13 +7,11 @@ import Card from './components/card'
 import Carousel from './components/carousel'
 import Hero from './components/hero'
 import Stats from './components/stats'
-
-
-const inter = Inter({ subsets: ['latin'] })
+import Contact from './components/contact'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between px-5 sm:px-7 lg:px-10 over">
+    <main className="flex min-h-screen flex-col items-center justify-between">
       
       <Intro />
       
@@ -24,6 +22,8 @@ export default function Home() {
       <Stats />
 
       <Hero title='Ready to Join?' description='Fully autamated Resume Analysis helps in significantly imporving overall hiring efficiency and helps hire quality individuals in fraction of the time compared to manual process' button='Get Started' />
+
+      <Contact />
 
     </main>
   )
