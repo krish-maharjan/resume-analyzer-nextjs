@@ -28,18 +28,22 @@ export default function Carousel() {
         ],
     }
 
-    const [index, setIndex] = useState('');
-    const length = 3;
+    const [bindex, setbIndex] = useState(4);
+    const [findex, setfIndex] = useState(4);
+    const length = Object.keys(slides).length;
 
-    const handelPrevious = () => {
-        const newIndex = index -1;
-        setIndex(newIndex < 0 ? length - 1 : newIndex);
-    };
-
-    const handelNext = () => {
-        const newIndex = index + 1;
-        setIndex(newIndex >= length ? 0 : newIndex)
-    };
+    const handleBack = () => {
+        setbIndex(bindex-3)
+        if (bindex < 1){
+            setbIndex(length)
+        }
+    }
+    const handleForward = () => {
+        setfIndex(findex+3)
+        if (findex > length){
+            setbIndex(1)
+        }
+    }
 
     return(
         <section className='relative px-10'>
@@ -47,20 +51,20 @@ export default function Carousel() {
                 <h2>Our Work</h2>
                 <p>Here are some work we've done</p>
             </div>
-            {Object.entries(slides).map(([key, values]) => (
-                <div className="absolute right-0">
-                    <button onClick={handelPrevious} className="btn btn-circle">❮</button> 
-                    <button onClick={handelNext} className="btn btn-circle">❯</button>
-                </div>
-            ))}
+        
+            <div className="absolute right-0 flex flex-row gap-3">
+                <a href={'#'+bindex} onClick={handleBack} className="btn btn-circle">❮</a> 
+                <a href={'#'+findex} onClick={handleForward} className="btn btn-circle">❯</a>
+            </div>
 
             <div className="carousel carousel-center rounded-box">
                 {Object.entries(slides).map(([key, values]) => (
-                    <div className="carousel-item max-w-[25%]" index={key} >
+                    <div className="carousel-item max-w-[25%]" id={key} >
                         <img src={values[0].img} alt="Resume Analyzer" className="w-full h-auto object-cover" />
                     </div> 
                 ))}
             </div>
+            
         </section>
     )
 }

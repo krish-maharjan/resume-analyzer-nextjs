@@ -17,7 +17,7 @@ export default function Contact() {
                         <form action="" className="card-body w-[45rem] max-w-[50rem] min-w-full ">
                             <div className="my-3">
                                 <label htmlFor="email" className="input-group input-group-vertical text-black">Name</label>
-                                <input className="input input-bordered w-full max-w-xs text-black"
+                                <input className="input input-bordered w-full text-black"
                                     type="Text"
                                     name="Name"
                                     required
@@ -25,8 +25,8 @@ export default function Contact() {
                                 />
                             </div>
                             <div className="my-3">
-                                <label htmlFor="email" className="input-group input-group-vertical text-black min-w-full">Email</label>
-                                <input className="input input-bordered w-full max-w-xs text-black"
+                                <label htmlFor="email" className="input-group input-group-vertical text-black">Email</label>
+                                <input className="input input-bordered w-full text-black"
                                     type="email"
                                     id="email"
                                     name="email"
@@ -36,7 +36,7 @@ export default function Contact() {
                             </div>
                             <div className="my-3">
                                 <label htmlFor="message" className="input-group input-group-vertical text-black">Message</label>
-                                <textarea className="input input-bordered w-full text-black min-h-[4rem]"
+                                <textarea className="input input-bordered w-full text-black min-h-[7rem]"
                                     type="message"
                                     id="message"
                                     name="message"
@@ -48,11 +48,18 @@ export default function Contact() {
                                 <button className='btn btn-primary'>Submit</button>
 
                                 <div className="flex flex-row gap-3 justify-center items-center">
+                                    <a href="/resume">
                                     <FontAwesomeIcon className='text-4xl' icon={faFacebook} />
+                                    </a>
+                                    <a href="/resume">
                                     <FontAwesomeIcon className='text-4xl' icon={faTwitter} />
+                                    </a>
+                                    <a href="/resume">
                                     <FontAwesomeIcon className='text-4xl' icon={faInstagram} />
+                                    </a>
+                                    <a href="/resume">
                                     <FontAwesomeIcon className='text-4xl' icon={faLinkedin} />
-                                    <FontAwesomeIcon className='text-4xl' icon={faGithub} />
+                                    </a>
                                 </div>
                             </div>
                         </form>

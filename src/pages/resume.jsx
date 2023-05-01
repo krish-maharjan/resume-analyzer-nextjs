@@ -119,7 +119,7 @@ export default function Resume() {
   // })
   
   return (
-    <section className="flex flex-col justify-center items-center my-16 xl:px-52 lg:px-32 md:px-16 sm:px-10 gap-5">
+    <section className="flex flex-col justify-center items-center mt-32 xl:px-52 lg:px-32 md:px-16 sm:px-10 gap-5">
       <div className="card w-full bg-slate-50 shadow-2xl backdrop-filter backdrop-blur-lg bg-opacity-30 firefox:bg-opacity-90">
         <form onSubmit={handleSubmit} className="card-body">
           <div className="my-3">
