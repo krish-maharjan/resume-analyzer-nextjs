@@ -1,10 +1,15 @@
 .modal {
     background: #fff;
-    min-width: 500px;
-    min-height: 250px;
+    min-width: fit-content;
+    min-height: fit-content;
     border-radius: 15px;
-    padding: 20px;
-    z-index: 100;
+    padding: 5rem;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    gap: 1rem;
 }
 
 .header {
@@ -19,6 +24,7 @@
 
 .overlay {
     position: fixed;
+    z-index: 99;
     top: 0;
     left: 0;
     width: 100%;

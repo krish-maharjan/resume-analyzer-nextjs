@@ -18,11 +18,12 @@ export default function Resume() {
   const [keywords_received, setKeywords_received] = useState(keywds);
   // const [tready, setReady] = useState(null)
   // modal
-  const[showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [processingStatus, setProcessingStatus] = useState(true);
 
 
   // console.log(keywords_received, typeof (keywords_received))
-  
+
   // keywords generator
   const handleInputChange = (event) => {
     setJobTitle(event.target.value);
@@ -56,6 +57,8 @@ export default function Resume() {
 
   const handleSubmit = async (e) => {
     setShowModal(true)
+    setProcessingStatus(false)
+    console.log('processing Status', processingStatus)
     e.preventDefault();
     const formData = new FormData();
 
@@ -77,16 +80,20 @@ export default function Resume() {
 
     const data = await res.json();
     setResponse(data);
-
   };
-  
-  
+
+  useEffect(() => {
+    setProcessingStatus(true)
+    console.log('processing Status', processingStatus)
+  }, [response])
+
+
   var rnames = [];
   var mper = [];
   var ccsv = "";
-  
+
   const convertToHTML = (data) => {
-    
+
     Object.keys(data).forEach((key) => {
       if (key == 'Resume Names') {
         // console.log(typeof(key))
@@ -103,12 +110,13 @@ export default function Resume() {
       }
       else if (key == 'csv_file') {
         ccsv += data[key];
-        }
+      }
     });
     // setReady = 'ready'
     return [rnames, mper, ccsv];
   };
-  
+
+
   // console.log('new arrays',rnames, mper, ccsv)
   const resultPair = {
     'names': rnames,
@@ -120,13 +128,38 @@ export default function Resume() {
   //   console.log('keyvaluepairs',key, value)
   //   var showResult = <tr> <td>{key}</td> <td>{value}</td> </tr>
   // })
-  
+
   return (
-    <section className="flex flex-col justify-center items-center mt-32 xl:px-52 lg:px-32 md:px-16 sm:px-10 gap-5">
+    <section className="flex flex-col justify-center items-center mt-40 xl:px-52 lg:px-32 md:px-16 sm:px-10 gap-5">
+      <div className="flex flex-col items-center my-10 gap-11">
+        <h1 className="text-3xl font-extrabold">Resume Analyzer</h1>
+        <div>
+          <p className="mb-3">Here is a 3-step process to analyze resume</p>
+          <ul className="flex flex-col gap-1">
+            <li>
+              <strong>Step 1: </strong> input 'Job Description' or 'Keywords'</li>
+            <li>
+              <strong>Step 2: </strong>Upload resumes by clicking on 'CHOOSE FILES'</li>
+            <li>
+              <strong>Step 3: </strong>If you're satisfied with the keywords and the resumes provided click on 'START ANALYSIS', This will start analyzing the resumes and will tell you when analysis is completed</li>
+          </ul>
+        </div>
+        <main id="mouse-scroll">
+                    <div className="mouse">
+                        <div className="mouse-in"></div>
+                    </div>
+                    <div>
+                        <span className="down-arrow-1"></span>
+                        <span className="down-arrow-2"></span>
+                        <span className="down-arrow-3"></span>
+                    </div>
+                </main>
+      </div>
+
       <div className="card w-full bg-slate-50 shadow-2xl backdrop-filter backdrop-blur-lg bg-opacity-30 firefox:bg-opacity-90">
         <form onSubmit={handleSubmit} className="card-body">
           <div className="my-3">
-            <label htmlFor="email" className="input-group input-group-vertical text-black">Email</label>
+            <label htmlFor="email" className="input-group input-group-vertical text-black">Email*</label>
             <input className="input input-bordered w-full max-w-xs text-black"
               type="email"
               id="email"
@@ -138,13 +171,13 @@ export default function Resume() {
           </div>
           <div className="my-3">
             <label className="input-group input-group-vertical text-black">
-            Job Description:
+              Job Description
               <textarea type="text" value={jobTitle} onChange={handleInputChange} className="textarea  textarea-bordered min-h-[7rem]" />
             </label>
             <button onClick={handleKeywds} className="btn mt-3">Extract Keywords</button>
           </div>
           <div className="my-3">
-            <label htmlFor="keywords_received" className="input-group input-group-vertical text-black">Add tags here by pressing enter</label>
+            <label htmlFor="keywords_received" className="input-group input-group-vertical text-black">Add tags here by pressing enter*</label>
             {/* Input Tag */}
             <div className="tginput">
               {/* <h1>Add tags here by pressing enter</h1> */}
@@ -163,49 +196,54 @@ export default function Resume() {
 
           </div>
           <div className="my-3">
-            <label htmlFor="rdoc" className="input-group input-group-vertical text-black">Upload Resume Here</label>
+            <label htmlFor="rdoc" className="input-group input-group-vertical text-black">Upload Resume*</label>
             <input className="file-input file-input-bordered w-full max-w-xs" type="file" id="rdoc" name="rdoc" required multiple onChange={handleFileChange} />
           </div>
           <button type="submit" className="btn btn-primary  btn-active btn-xs sm:btn-sm md:btn-md lg:btn-lg" htmlFor="my-modal-6">Start Analysis</button>
-          <Modal show={showModal} onClose={() => setShowModal(false)}>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius, veritatis?
+          <Modal show={showModal} onClose={() => setShowModal(false)} closeBtnName='View Result'>
+            {
+              processingStatus == false
+                ? 'Analyzing...'
+                : 'Analysis Complete!'
+
+            }
           </Modal>
 
         </form>
       </div>
 
-      <div className="card w-full bg-slate-50 shadow-2xl backdrop-filter backdrop-blur-lg bg-opacity-30 firefox:bg-opacity-90 p-5 overflow-x-auto">
+      <div className="card w-full bg-slate-50 shadow-2xl backdrop-filter backdrop-blur-lg bg-opacity-30 firefox:bg-opacity-90 p-5 overflow-x-auto" id="resultid">
         <h1 className="text-4xl font-bold my-3">Result</h1>
         {response && <div className="hidden" dangerouslySetInnerHTML={{ __html: convertToHTML(response) }} />}
 
         {rnames.length > 0 && mper.length > 0 ? (
-        <table className="table w-full">
-          <thead>
-            <tr>
-              <th>Sno.</th>
-              <th>Resume Name</th>
-              <th>Match Percentage</th>
-            </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>&rarr;</td>
-            <td><strong>Download full csv report</strong></td>
-            <td><a href={ccsv} className="btn btn-primary">CSV File</a></td>
-          </tr>
+          <table className="table w-full">
+            <thead>
+              <tr>
+                <th>Sno.</th>
+                <th>Resume Name</th>
+                <th>Match Percentage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>&rarr;</td>
+                <td><strong>Download full csv report</strong></td>
+                <td><a href={ccsv} className="btn btn-primary">CSV File</a></td>
+              </tr>
 
-          {rnames.map((name, index) => (
-            <tr key={index} className="hover">
-              <td>{index+1}</td>
-              <td>{name}</td>
-              <td>{mper[index]}</td>
-            </tr>
-          ))}    
-          </tbody>
-        </table>
-      ) : (
-        <p>No results yet</p>
-      )}
+              {rnames.map((name, index) => (
+                <tr key={index} className="hover">
+                  <td>{index + 1}</td>
+                  <td>{name}</td>
+                  <td>{mper[index]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>No results yet</p>
+        )}
 
       </div>
     </section>

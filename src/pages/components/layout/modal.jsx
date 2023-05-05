@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import styles from '../../../styles/Modal.module.css'
 
-export default function Modal({show, onClose, children}) {
+export default function Modal({show, onClose, closeBtnName, children}) {
   const [isBrowser, setIsBrowser] = useState(false);
 
   useEffect(() => {
@@ -17,12 +17,12 @@ export default function Modal({show, onClose, children}) {
   const modalContent = show ? (
     <div className={styles.overlay}>
       <div className={styles.modal}>
+        <div className={styles.body}>{children}</div>
         <div className={styles.header}>
-          <a href="#" onClick={handleClose}>
-            <button className="btn">close</button>
+          <a href="#resultid" onClick={handleClose}>
+            <button className="btn btn-primary">{closeBtnName}</button>
           </a>
         </div>
-        <div className={styles.body}>{children}</div>
       </div>
     </div>
   ) : null;

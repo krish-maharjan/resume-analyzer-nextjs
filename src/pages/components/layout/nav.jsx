@@ -29,7 +29,7 @@ export default function Nav() {
     }, [clientWindowHeight]);
 
     return (
-        <nav className="navbar fixed top-0 z-10" style={{
+        <nav className="navbar fixed top-0" style={{
             background: `rgba(255, 255, 255, ${backgroundTransparacy})`,
             padding: `${padding}px 0px`,
             boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
