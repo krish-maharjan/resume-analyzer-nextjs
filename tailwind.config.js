@@ -7,7 +7,7 @@ module.exports = {
   ],
   theme: {
     colors: {
-      'brand-p': '#005DB2',
+      'brand-p': '#254EDB',
       'brand-s': '#FF5768',
     },
 

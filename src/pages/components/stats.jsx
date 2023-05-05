@@ -8,7 +8,7 @@ export default function Stats() {
 
     return (
         <section className="flex justify-center w-full items-center">
-            <main className="min-h-[50vh] h-fit w-full flex gap-16 justify-center items-center bg-brand-p">
+            <div className="hero min-h-fit min-w-full bg-brand-p" style={{ backgroundImage: `url("/image/bg.png")` }}>
                 <ul className="flex flex-col lg:flex-row gap-12 lg:gap-32 py-12 justify-center items-center">
                     {Object.entries(stats).map(([key, value]) => (
                         <li className="flex flex-col gap-2 justify-center items-center">
@@ -17,7 +17,7 @@ export default function Stats() {
                         </li>
                     ))}
                 </ul>
-            </main>
+            </div>
         </section>
     )
 }

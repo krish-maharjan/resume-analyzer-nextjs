@@ -13,7 +13,7 @@ export default function Contact() {
             <div className="flex flex-row flex-wrap items-center lg:gap-10">
 
                 <div className="w-fit min-w-[75vw]">
-                    <div className="card w-full min-w-full bg-slate-50 shadow-2xl backdrop-filter backdrop-blur-lg bg-opacity-30 firefox:bg-opacity-90">
+                    <div className="card w-full bg-slate-50 shadow-2xl backdrop-filter backdrop-blur-lg bg-opacity-30 firefox:bg-opacity-90">
                         <form action="" className="card-body w-[45rem] max-w-[50rem] min-w-full ">
                             <div className="my-3">
                                 <label htmlFor="email" className="input-group input-group-vertical text-black">Name</label>
