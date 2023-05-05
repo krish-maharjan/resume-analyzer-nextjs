@@ -19,7 +19,8 @@ export default function Resume() {
   // const [tready, setReady] = useState(null)
   // modal
   const [showModal, setShowModal] = useState(false);
-  const [processingStatus, setProcessingStatus] = useState(true);
+  const [processingStatus, setProcessingStatus] = useState(false);
+  const [showArrow, setShowArrow] = useState(false)
 
 
   // console.log(keywords_received, typeof (keywords_received))
@@ -123,26 +124,27 @@ export default function Resume() {
     'match_percent': mper
   }
 
-  // Object.entries(resultPair).forEach(entry => {
-  //   const [key, value] = entry;
-  //   console.log('keyvaluepairs',key, value)
-  //   var showResult = <tr> <td>{key}</td> <td>{value}</td> </tr>
-  // })
+  // for closing modal
+  const handleClose = (e) => {
+    e.preventDefault();
+    setShowModal(false);
+    setShowArrow(true)
+  }
 
   return (
     <section className="flex flex-col justify-center items-center mt-40 xl:px-52 lg:px-32 md:px-16 sm:px-10 gap-5">
       <div className="flex flex-col items-center my-10 gap-11">
         <h1 className="text-3xl font-extrabold">Resume Analyzer</h1>
         <div>
-          <p className="mb-3">Here is a 3-step process to analyze resume</p>
-          <u3l className="flex flex-col gap-1">
+          <p className="mb-3">3-step process to analyze resumes</p>
+          <ul className="flex flex-col gap-1">
             <li>
               <strong>Step 1: </strong> input 'Job Description' or 'Keywords'</li>
             <li>
               <strong>Step 2: </strong>Upload resumes by clicking on 'CHOOSE FILES'</li>
             <li>
               <strong>Step 3: </strong>If you're satisfied with the keywords and the resumes provided click on 'START ANALYSIS', This will start analyzing the resumes and will tell you when analysis is completed</li>
-          </u3l>
+          </ul>
         </div>
       </div>
 
@@ -179,6 +181,7 @@ export default function Resume() {
                 onChange={handleTagChange}
                 name="tags"
                 placeHolder="tags"
+                required
               />
               {/* <em>Enter tags</em> */}
             </div>
@@ -190,23 +193,42 @@ export default function Resume() {
             <input className="file-input file-input-bordered w-full max-w-xs" type="file" id="rdoc" name="rdoc" required multiple onChange={handleFileChange} />
           </div>
           <button type="submit" className="btn btn-primary  btn-active btn-xs sm:btn-sm md:btn-md lg:btn-lg" htmlFor="my-modal-6">Start Analysis</button>
-          <Modal show={showModal} onClose={() => setShowModal(false)} closeBtnName='View Result'>
+          <Modal show={showModal}>
             {
               processingStatus == false
-                ? <button disabled type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center">
+                ? <button disabled type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 flex flex-col justify-center items-center gap-2">
                   <svg aria-hidden="true" role="status" class="inline w-8 h-8 mr-3 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="#E5E7EB" />
                     <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentColor" />
                   </svg>
                   Please wait... <br /> we're Analyzing Resumes
                 </button>
-                : 'Analysis Complete!'
-
+                : <div className="flex flex-col flex-wrap gap-2 justify-center items-center">
+                  <div className="flex flex-row justify-center items-center">
+                    <svg aria-hidden="true" class="w-7 h-7 mr-1.5 text-green-500 dark:text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    <h1 className="text-lg">Analysis Complete!</h1>
+                  </div>
+                  <a href="#resultid" onClick={handleClose}>
+                    <button className="btn btn-primary">View Result</button>
+                  </a>
+                </div>
             }
           </Modal>
 
         </form>
       </div>
+
+      {
+        showArrow == true
+          ? (
+            <div className="my-10">
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="7" stroke="currentColor" class="animate-bounce w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
+              </svg>
+            </div>
+          )
+          : null
+      }
 
       <div className="card w-full bg-slate-50 shadow-2xl backdrop-filter backdrop-blur-lg bg-opacity-30 firefox:bg-opacity-90 p-5 overflow-x-auto" id="resultid">
         <h1 className="text-4xl font-bold my-3">Result</h1>

@@ -1,28 +1,17 @@
 import { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-import styles from '../../../styles/Modal.module.css'
 
-export default function Modal({show, onClose, closeBtnName, children}) {
+export default function Modal({show, children}) {
   const [isBrowser, setIsBrowser] = useState(false);
 
   useEffect(() => {
     setIsBrowser(true);
   }, []);
 
-  const handleClose = (e) => {
-    e.preventDefault();
-    onClose();
-  }
-
   const modalContent = show ? (
-    <div className={styles.overlay}>
-      <div className={styles.modal}>
-        <div className={styles.body}>{children}</div>
-        <div className={styles.header}>
-          <a href="#resultid" onClick={handleClose}>
-            <button className="btn btn-primary">{closeBtnName}</button>
-          </a>
-        </div>
+    <div className='fixed z-30 top-0 left-0 w-full h-full flex justify-center items-center bg-center bg-[#000] bg-opacity-75'>
+      <div className='card bg-base-100 shadow-xl min-h-fit min-w-fit p-20 gap-4'>
+        <div className='card-body'>{children}</div>
       </div>
     </div>
   ) : null;
