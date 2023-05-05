@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // for Tag Input
 import { TagsInput } from "react-tag-input-component";
 
 // keywords extractor
 import keyword_extractor from 'keyword-extractor';
+
+// imort Modal
+import Modal from "./components/layout/modal";
 
 
 export default function Resume() {
@@ -13,10 +16,12 @@ export default function Resume() {
   const [jobTitle, setJobTitle] = useState(''); //texarea
   const [keywds, setKeywds] = useState([]); //texarea
   const [keywords_received, setKeywords_received] = useState(keywds);
-  const [isLoading, setIsLoading] = useState(false);
   // const [tready, setReady] = useState(null)
+  // modal
+  const[showModal, setShowModal] = useState(false);
 
-  console.log(keywords_received, typeof (keywords_received))
+
+  // console.log(keywords_received, typeof (keywords_received))
   
   // keywords generator
   const handleInputChange = (event) => {
@@ -25,7 +30,6 @@ export default function Resume() {
 
   const handleKeywds = (event) => {
     event.preventDefault();
-    setIsLoading(true);
     const extractedKeywds = keyword_extractor.extract(jobTitle, {
       language: 'english',
       remove_digits: true,
@@ -35,7 +39,6 @@ export default function Resume() {
     });
     // setKeywds(extractedKeywds);
     // console.log(keywds)
-    setIsLoading(false);
     setKeywords_received(extractedKeywds)
   };
 
@@ -52,8 +55,8 @@ export default function Resume() {
   };
 
   const handleSubmit = async (e) => {
+    setShowModal(true)
     e.preventDefault();
-    setIsLoading(true);
     const formData = new FormData();
 
     // console.log('rdoc',rdoc)
@@ -74,16 +77,16 @@ export default function Resume() {
 
     const data = await res.json();
     setResponse(data);
-    setIsLoading(true);
+
   };
-
-
+  
+  
   var rnames = [];
   var mper = [];
   var ccsv = "";
-
+  
   const convertToHTML = (data) => {
-
+    
     Object.keys(data).forEach((key) => {
       if (key == 'Resume Names') {
         // console.log(typeof(key))
@@ -106,7 +109,7 @@ export default function Resume() {
     return [rnames, mper, ccsv];
   };
   
-  console.log('new arrays',rnames, mper, ccsv)
+  // console.log('new arrays',rnames, mper, ccsv)
   const resultPair = {
     'names': rnames,
     'match_percent': mper
@@ -164,6 +167,9 @@ export default function Resume() {
             <input className="file-input file-input-bordered w-full max-w-xs" type="file" id="rdoc" name="rdoc" required multiple onChange={handleFileChange} />
           </div>
           <button type="submit" className="btn btn-primary  btn-active btn-xs sm:btn-sm md:btn-md lg:btn-lg" htmlFor="my-modal-6">Start Analysis</button>
+          <Modal show={showModal} onClose={() => setShowModal(false)}>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius, veritatis?
+          </Modal>
 
         </form>
       </div>
