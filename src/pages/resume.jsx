@@ -9,6 +9,30 @@ import keyword_extractor from 'keyword-extractor';
 import Modal from "./components/layout/modal";
 
 
+import Cookies from 'js-cookie';
+
+
+
+import { parseCookies } from 'nookies';
+
+export async function getServerSideProps(context) {
+  const cookies = parseCookies(context);
+  const token = cookies.token;
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {}, // Will be passed to the page component as props
+  };
+}
+
 export default function Resume() {
   const [rdoc, setrdoc] = useState([]);
   const [email, setEmail] = useState("");
@@ -39,6 +63,7 @@ export default function Resume() {
       remove_duplicates: true,
       return_max_ngrams: 1,
     });
+    
     // setKeywds(extractedKeywds);
     // console.log(keywds)
     setKeywords_received(extractedKeywds)
@@ -71,16 +96,36 @@ export default function Resume() {
     formData.append("email", email);
     formData.append("keywords_received", keywords_received);
 
-    // console.log(formData)
-    // console.log(rdoc)
+    console.log(formData)
+    console.log('console email rdoc and keywords reaceived', email, rdoc, keywords_received)
+
+    // For token authentication
+    const token = Cookies.get('token'); // Read token from cookies
+    const edited_token = 'token ' + token
+    // const header = {
+    //   'Content-Type': 'multipart/form-data',
+    //   'Authorization': edited_token
+    // }
+    // console.log('This is headers', header)
 
     const res = await fetch("http://127.0.0.1:8000/api/resume/", {
       method: "POST",
+      headers: {
+        'Accept': '*/*',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive',
+        
+        'Authorization': edited_token,
+      },
       body: formData,
     });
 
+    
+    console.log(formData)
+    
     const data = await res.json();
     setResponse(data);
+    console.log(data)
   };
 
   useEffect(() => {
@@ -267,3 +312,5 @@ export default function Resume() {
     </section>
   );
 };
+
+// export default withAuth(Resume);

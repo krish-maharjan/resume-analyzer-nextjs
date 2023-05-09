@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
-export default function Nav() {
+import { parseCookies } from 'nookies';
+
+
+export default function Nav(context) {
+    const cookies = parseCookies(context);
+    const token = cookies.token;
+
     const [clientWindowHeight, setClientWindowHeight] = useState("");
 
     const [backgroundTransparacy, setBackgroundTransparacy] = useState(0);
@@ -33,7 +40,7 @@ export default function Nav() {
             background: `rgba(255, 255, 255, ${backgroundTransparacy})`,
             padding: `${padding}px 0px`,
             boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
-          }}>
+        }}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -73,8 +80,17 @@ export default function Nav() {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn btn-primary">Get started</a>
+                {token ? (
+                    <Link href='#' className="btn btn-primary">
+                        Logout
+                    </Link>
+                ) : (
+                    <Link href='/login' className="btn btn-primary">
+                        Get started
+                    </Link>
+                )}
             </div>
+
         </nav>
     )
 }
