@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
 
-import { parseCookies } from 'nookies';
+import { parseCookies, destroyCookie } from 'nookies';
+import Cookies from "js-cookie";
 
 
 export default function Nav(context) {
@@ -13,6 +15,16 @@ export default function Nav(context) {
     const [backgroundTransparacy, setBackgroundTransparacy] = useState(0);
     const [padding, setPadding] = useState(15);
     const [boxShadow, setBoxShadow] = useState(0);
+
+    const router = useRouter()
+
+    function handleLogout() {
+        console.log('clicked logout')
+        destroyCookie(null, 'token', { path: '/' })
+
+        router.reload();
+    }
+
 
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
@@ -61,7 +73,7 @@ export default function Nav(context) {
                         <li><a>About</a></li>
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">ResumeAnalyzer</a>
+                <Link href='/resume' className="btn btn-ghost normal-case text-xl">ResumeAnalyzer</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -77,13 +89,21 @@ export default function Nav(context) {
                         </ul>
                     </li>
                     <li><a>About</a></li>
+                    {/* {token ? (
+                        <li>
+                            <Link href='/resume'>
+                                ResumeAnalyzer
+                            </Link>
+                        </li>
+                    ) : (null)} */}
+
                 </ul>
             </div>
             <div className="navbar-end">
                 {token ? (
-                    <Link href='#' className="btn btn-primary">
+                    <button onClick={handleLogout} className="btn btn-primary">
                         Logout
-                    </Link>
+                    </button>
                 ) : (
                     <Link href='/login' className="btn btn-primary">
                         Get started

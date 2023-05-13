@@ -25,15 +25,25 @@ export default function LoginPage() {
 
   return (
     <section className="flex flex-col justify-center items-center my-16 mt-32 xl:px-52 lg:px-32 md:px-16 sm:px-10 gap-5">
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input type="username" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
 
-        <label htmlFor="password">Password:</label>
-        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <div className="card w-full bg-slate-50 shadow-2xl backdrop-filter backdrop-blur-lg bg-opacity-30 firefox:bg-opacity-90 max-w-fit">
 
-        <button type="submit" disabled={loading}>{loading ? 'Loading...' : 'Login'}</button>
-      </form>
+        <form onSubmit={handleSubmit} className="card-body max-w-fit flex justify-center items-center p-9">
+          <h1 className="text-3xl mb-5"><strong>Login</strong></h1>
+          <div>
+            <label htmlFor="username" className="text-sm input-group input-group-vertical text-black">Username:</label>
+            <input type="username" id="username" value={username} onChange={(e) => setUsername(e.target.value)} className="input input-bordered w-full max-w-xs text-black" />
+          </div>
+
+          <div>
+            <label htmlFor="password" className="text-sm input-group input-group-vertical text-black">Password:</label>
+            <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} className="input input-bordered w-full max-w-xs text-black" />
+          </div>
+
+            <button type="submit" disabled={loading} className="btn btn-primary w-full">{loading ? 'Loading...' : 'Login'}</button>
+
+        </form>
+      </div>
 
       {error && <p>{error}</p>}
     </section>
