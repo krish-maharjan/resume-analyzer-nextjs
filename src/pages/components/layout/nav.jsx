@@ -22,7 +22,7 @@ export default function Nav(context) {
         console.log('clicked logout')
         destroyCookie(null, 'token', { path: '/' })
 
-        router.reload();
+        router.push('/login');
     }
 
 
