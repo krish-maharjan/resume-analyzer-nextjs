@@ -17,3 +17,6 @@ pnpm dev
 ```
 
 Open [http://localhost:3000/resume] with your browser to see the result.
+
+Create new user through register page [http://localhost:3000/register]
+And login to access the resume analyzer at [http://localhost:3000/resume]
