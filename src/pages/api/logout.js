@@ -1,11 +1,10 @@
 import Cookies from "js-cookie";
 
-export async function logout() {
+export async function logout(token) {
     console.log('clicked logout')
-    const token = Cookies.get('token');
     const edited_token = 'token ' + token
 
-    const response = await fetch('http://localhost:8000/api/login/', {
+    const response = await fetch('http://localhost:8000/api/logout/', {
       method: 'POST',
       headers: {
         Authentication: edited_token,

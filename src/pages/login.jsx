@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { login } from './api/authapi';
+import Link from 'next/link';
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
@@ -16,6 +17,7 @@ export default function LoginPage() {
     try {
       const token = await login(username, password);
       document.cookie = `token=${token}; path=/`;
+      document.cookie = `username=${username}; path=/`;
       router.push('/resume'); // Redirect to the home page after successful login
     } catch (err) {
       setError(err.message);
@@ -38,6 +40,7 @@ export default function LoginPage() {
           <div>
             <label htmlFor="password" className="text-sm input-group input-group-vertical text-black">Password:</label>
             <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} className="input input-bordered w-full max-w-xs text-black" />
+            <label className="text-sm input-group input-group-vertical text-brand-s"> <Link href='/register'>Not registered yet?</Link></label>
           </div>
 
             <button type="submit" disabled={loading} className="btn btn-primary w-full">{loading ? 'Loading...' : 'Login'}</button>

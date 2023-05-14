@@ -93,7 +93,9 @@ export default function Resume() {
       formData.append("rdoc", rdoc[i]);
     }
 
-    formData.append("email", email);
+    const username = Cookies.get('username'); // Read token from cookies
+
+    formData.append("email", username);
     formData.append("keywords_received", keywords_received);
 
     console.log(formData)
@@ -158,7 +160,6 @@ export default function Resume() {
         ccsv += data[key];
       }
     });
-    // setReady = 'ready'
     return [rnames, mper, ccsv];
   };
 
@@ -195,17 +196,6 @@ export default function Resume() {
 
       <div className="card w-full bg-slate-50 shadow-2xl backdrop-filter backdrop-blur-lg bg-opacity-30 firefox:bg-opacity-90">
         <form onSubmit={handleSubmit} className="card-body">
-          <div className="my-3">
-            <label htmlFor="email" className="input-group input-group-vertical text-black">Email*</label>
-            <input className="input input-bordered w-full max-w-xs text-black"
-              type="email"
-              id="email"
-              name="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
           <div className="my-3">
             <label className="input-group input-group-vertical text-black">
               Job Description
