@@ -4,7 +4,7 @@ export async function logout(token) {
     console.log('clicked logout')
     const edited_token = 'token ' + token
 
-    const response = await fetch('http://localhost:8000/api/logout/', {
+    const response = await fetch('https://krishmaharjan.pythonanywhere.com/api/logout/', {
       method: 'POST',
       headers: {
         Authentication: edited_token,
