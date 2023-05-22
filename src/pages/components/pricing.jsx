@@ -26,7 +26,7 @@ export default function Pricing() {
             <div className="flex flex-row flex-wrap justify-center items-center gap-10">
 
                 {Object.entries(plans).map(([plan, details]) => (
-                    <div className="card w-64 bg-base-100 shadow-xl p-7">
+                    <div className="card lg:w-64 w-72 bg-base-100 shadow-xl p-7">
                         <h5 className="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">{plan}</h5>
 
                         <div className="flex items-baseline text-gray-900 dark:text-white">
