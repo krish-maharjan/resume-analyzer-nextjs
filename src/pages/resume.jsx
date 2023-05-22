@@ -132,7 +132,7 @@ export default function Resume() {
     // }
     // console.log('This is headers', header)
 
-    const res = await fetch("http://127.0.0.1:8000/api/resume/", {
+    const res = await fetch("https://krishmaharjan.pythonanywhere.com/api/resume/", {
       method: "POST",
       headers: {
         'Accept': '*/*',

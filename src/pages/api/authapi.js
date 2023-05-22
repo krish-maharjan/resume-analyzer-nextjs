@@ -2,7 +2,7 @@ export async function login(username, password) {
     const formData = new FormData();
     formData.append('username', username);
     formData.append('password', password);
-    const response = await fetch('http://localhost:8000/api/login/', {
+    const response = await fetch('https://krishmaharjan.pythonanywhere.com/api/login/', {
       method: 'POST',
       body: formData,
     });
