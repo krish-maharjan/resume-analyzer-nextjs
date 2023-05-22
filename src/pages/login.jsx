@@ -67,7 +67,7 @@ export default function LoginPage() {
           <div>
             <label htmlFor="password" className="text-sm input-group input-group-vertical text-black">Password:</label>
             <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} className="input input-bordered w-full max-w-xs text-black" />
-            <label className="text-sm input-group input-group-vertical text-brand-s"> <Link href='/register'>Not registered yet?</Link></label>
+            {/* <label className="text-sm input-group input-group-vertical text-brand-s"> <Link href='/register'>Not registered yet?</Link></label> */}
           </div>
 
           <button type="submit" disabled={loading} className="btn btn-primary w-full">{loading ? 'logging in...' : 'Login'}</button>

@@ -1,12 +1,12 @@
 export default function Intro() {
     return (
-        <section className="flex flex-row w-full mt-12 px-16">
+        <section className="flex flex-row w-full mt-12">
             <div className="flex min-h-screen min-w-full justify-center items-start">
                 <div className="flex flex-col lg:flex-row-reverse items-center">
-                    <div className="w-[50%] max-h-screen">
+                    <div className="lg:w-[50%] w-full  max-h-screen">
                         <img src="./image/4.png" alt="image" className="w-full h-auto object-cover" />
                     </div>
-                    <div className="w-[50%]">
+                    <div className="lg:w-[50%] w-full">
                         <h1 className="text-5xl font-bold">Resume Analyzer</h1>
                         <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                         <div className="form-control">

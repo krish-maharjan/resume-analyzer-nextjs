@@ -36,6 +36,13 @@ section {
 
   max-width: 100%;
   margin-bottom: 5rem;
+  padding: 4rem;
+}
+
+@media screen and (max-width: 800px) {
+  section{
+    padding: 1.5rem;
+  }
 }
 
 section > .shead {

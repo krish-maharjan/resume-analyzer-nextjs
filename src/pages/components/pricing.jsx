@@ -23,10 +23,10 @@ export default function Pricing() {
                 <h2>Pricing plans</h2>
                 <p>Available pricing plans</p>
             </div>
-            <div className="flex flex-row flex-wrap justify-center items-center gap-6">
+            <div className="flex flex-row flex-wrap justify-center items-center gap-10">
 
                 {Object.entries(plans).map(([plan, details]) => (
-                    <div className="card bg-base-100 shadow-xl p-7">
+                    <div className="card w-64 bg-base-100 shadow-xl p-7">
                         <h5 className="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">{plan}</h5>
 
                         <div className="flex items-baseline text-gray-900 dark:text-white">
