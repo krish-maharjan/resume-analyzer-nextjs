@@ -44,7 +44,7 @@ export default function Contact() {
                                     onChange={(e) => setMessage(e.target.value)}
                                 />
                             </div>
-                            <div className="my-3 flex lg:flex-row flex-col justify-between gap-3">
+                            <div className="my-3 flex lg:flex-row flex-col justify-between gap-5">
                                 <button className='btn btn-accent'>Submit</button>
 
                                 <div className="flex flex-row gap-3 justify-center items-center">

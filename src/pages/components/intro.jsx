@@ -5,8 +5,8 @@ export default function Intro() {
         <section className="flex flex-row w-full pt-8">
             <div className="flex min-h-screen min-w-full justify-center items-start">
                 <div className="flex flex-col lg:flex-row-reverse items-center">
-                    <div className="lg:w-[50%] w-full  max-h-screen">
-                        <img src="./image/4.png" alt="image" className="w-full h-auto object-cover" />
+                    <div className="lg:w-[50%] w-full  ">
+                        <img src="./image/4.png" alt="image" className="w-full max-h-screen object-cover" />
                     </div>
                     <div className="lg:w-[50%] w-full">
                         <h1 className="text-5xl font-bold">Resume Analyzer</h1>
