@@ -3,21 +3,21 @@ export default function Card() {
         'card1': [
             {'title': 'Resume Analysis'},
             {'description': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, atque.'},
-            {'img': '/image/2.png'},
+            {'img': './image/2.png'},
             {'alttxt': 'Analysis'},
         ],
 
         'card2': [
             {'title': 'Resume Analysis'},
             {'description': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, atque.'},
-            {'img': '/image/3.png'},
+            {'img': './image/3.png'},
             {'alttxt': 'Analysis'},
         ],
 
         'card3': [
             {'title': 'Resume Analysis'},
             {'description': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, atque.'},
-            {'img': '/image/4.png'},
+            {'img': './image/4.png'},
             {'alttxt': 'Analysis'},
         ],
     }
