@@ -9,30 +9,40 @@ import keyword_extractor from 'keyword-extractor';
 import Modal from "./components/layout/modal";
 
 import Cookies from 'js-cookie';
-import { parseCookies } from 'nookies';
+import { useRouter } from "next/router";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCheck } from "@fortawesome/free-solid-svg-icons";
 
-export async function getServerSideProps(context) {
-  const cookies = parseCookies(context);
-  const token = cookies.token;
+// export async function getServerSideProps(context) {
+//   const cookies = parseCookies(context);
+//   const token = cookies.token;
 
-  if (!token) {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false,
-      },
-    };
-  }
+//   if (!token) {
+//     return {
+//       redirect: {
+//         destination: '/login',
+//         permanent: false,
+//       },
+//     };
+//   }
 
-  return {
-    props: {}, // Will be passed to the page component as props
-  };
-}
+//   return {
+//     props: {}, // Will be passed to the page component as props
+//   };
+// }
 
 export default function Resume() {
+  const router = useRouter();
+  useEffect(() => {
+    // Check if the user is authenticated
+    const token = Cookies.get("token");
+    if (!token) {
+      // Redirect to the login page if not authenticated
+      router.push("/login");
+    }
+  }, []);
+
   const [rdoc, setrdoc] = useState([]);
   const [email, setEmail] = useState("");
   const [response, setResponse] = useState(null);

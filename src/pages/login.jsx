@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { login } from './api/authapi';
 import Link from 'next/link';
+
+import Cookies from 'js-cookie';
 
 import Modal from "./components/layout/modal";
 
@@ -9,11 +11,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 export default function LoginPage() {
+
+  const router = useRouter();
+  useEffect(() => {
+    // Check if the user is authenticated
+    const token = Cookies.get("token");
+    if (token) {
+      // Redirect to the login page if not authenticated
+      router.push("/");
+    }
+  }, []);
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
 
   const [showModal, setShowModal] = useState(false);
 

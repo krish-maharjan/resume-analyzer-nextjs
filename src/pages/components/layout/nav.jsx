@@ -104,10 +104,7 @@ export default function Nav(context) {
                     )}
                 </ul>
             </div>
-            {/* The button to open modal */}
-            {/* <a href="#my-modal-2" className="btn">open modal</a> */}
-            {/* <p>{/<em> Put this part before </body> tag </em>/}</p> */}
-            {/* {showModal == true && */}
+            
             <input type="checkbox" id="my-modal-4" className="modal-toggle" />
             {showModal == true &&
                 <>
