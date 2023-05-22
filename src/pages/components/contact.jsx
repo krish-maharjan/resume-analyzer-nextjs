@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faLinkedin, faFacebook, faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faLinkedin, faFacebook, faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 export default function Contact() {
     return (
@@ -45,7 +45,7 @@ export default function Contact() {
                                 />
                             </div>
                             <div className="my-3 flex flex-row justify-between">
-                                <button className='btn btn-outline btn-primary'>Submit</button>
+                                <button className='btn btn-accent'>Submit</button>
 
                                 <div className="flex flex-row gap-3 justify-center items-center">
                                     <a href="/resume">

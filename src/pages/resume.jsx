@@ -8,12 +8,11 @@ import keyword_extractor from 'keyword-extractor';
 // imort Modal
 import Modal from "./components/layout/modal";
 
-
 import Cookies from 'js-cookie';
-
-
-
 import { parseCookies } from 'nookies';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCheck } from "@fortawesome/free-solid-svg-icons";
 
 export async function getServerSideProps(context) {
   const cookies = parseCookies(context);
@@ -46,6 +45,19 @@ export default function Resume() {
   const [processingStatus, setProcessingStatus] = useState(false);
   const [showArrow, setShowArrow] = useState(false)
 
+  const [openToast, setOpenToast] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setOpenToast(false);
+    }, 10000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  function closeToast() {
+    setOpenToast(false)
+  }
 
   // console.log(keywords_received, typeof (keywords_received))
 
@@ -63,7 +75,7 @@ export default function Resume() {
       remove_duplicates: true,
       return_max_ngrams: 1,
     });
-    
+
     // setKeywds(extractedKeywds);
     // console.log(keywds)
     setKeywords_received(extractedKeywds)
@@ -116,15 +128,15 @@ export default function Resume() {
         'Accept': '*/*',
         'Accept-Encoding': 'gzip, deflate, br',
         'Connection': 'keep-alive',
-        
+
         'Authorization': edited_token,
       },
       body: formData,
     });
 
-    
+
     console.log(formData)
-    
+
     const data = await res.json();
     setResponse(data);
     console.log(data)
@@ -193,6 +205,18 @@ export default function Resume() {
           </ul>
         </div>
       </div>
+
+      {
+        showArrow == false
+          ? (
+            <div className="my-10">
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="7" stroke="currentColor" class="animate-bounce w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
+              </svg>
+            </div>
+          )
+          : null
+      }
 
       <div className="card w-full bg-slate-50 shadow-2xl backdrop-filter backdrop-blur-lg bg-opacity-30 firefox:bg-opacity-90">
         <form onSubmit={handleSubmit} className="card-body">
@@ -297,8 +321,18 @@ export default function Resume() {
         ) : (
           <p>No results yet</p>
         )}
-
       </div>
+
+      {openToast &&
+        <div className="toast cursor-pointer" onClick={closeToast}>
+          <div className="alert alert-success">
+            <div>
+              <FontAwesomeIcon className='text-xl' icon={faUserCheck} />
+              <span>Successfully logged in!</span>
+            </div>
+          </div>
+        </div>
+      }
     </section>
   );
 };

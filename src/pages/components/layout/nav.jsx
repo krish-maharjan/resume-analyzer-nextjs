@@ -4,6 +4,9 @@ import Link from "next/link";
 
 import { parseCookies, destroyCookie } from 'nookies';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+
 export default function Nav(context) {
     const cookies = parseCookies(context);
     const token = cookies.token;
@@ -14,13 +17,23 @@ export default function Nav(context) {
     const [padding, setPadding] = useState(15);
     const [boxShadow, setBoxShadow] = useState(0);
 
+    const [showModal, setShowModal] = useState(true);
+
     const router = useRouter()
+
+    function toggleModal(){
+        setShowModal(true)
+    }
+
+    // useEffect(() => {
+    // }, [])
 
     function handleLogout() {
         console.log('clicked logout')
         destroyCookie(null, 'token', { path: '/' })
         destroyCookie(null, 'username', { path: '/' })
 
+        setShowModal(false)
         router.push('/login');
     }
 
@@ -73,27 +86,40 @@ export default function Nav(context) {
             </div>
             <div className="navbar-end">
 
-                {token ? (
-                    <ul className="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal px-1">
+                    {token ? (
 
-                    <li tabIndex={0}>
-                        <div className="avatar">
-                            <div className="w-10 rounded-full">
-                                <img src="/image/avatar.png" />
+                        <li tabIndex={0}>
+                            <div className="avatar">
+                                <FontAwesomeIcon className='text-3xl' icon={faUser} />
                             </div>
-                        </div>
-                        <ul className="p-2 bg-neutral-200">
-                            <li className="mr-3"><a onClick={handleLogout}>logout</a></li>
-                        </ul>
-                    </li>
-                    </ul>
-                ) : (
-                    <Link href='/login' className="btn btn-primary">
-                        Login
-                    </Link>
-                )}
+                            <ul className="p-2 bg-neutral-200">
+                                <label htmlFor="my-modal-4" className="p-1 cursor-pointer" onClick={toggleModal}>logout</label>
+                            </ul>
+                        </li>
+                    ) : (
+                        <Link href='/login' className="btn btn-primary">
+                            Login
+                        </Link>
+                    )}
+                </ul>
             </div>
-
+            {/* The button to open modal */}
+            {/* <a href="#my-modal-2" className="btn">open modal</a> */}
+            {/* <p>{/<em> Put this part before </body> tag </em>/}</p> */}
+            {/* {showModal == true && */}
+            <input type="checkbox" id="my-modal-4" className="modal-toggle" />
+            {showModal == true &&
+                <>
+                    <label htmlFor="my-modal-4" className="modal cursor-pointer">
+                        <label className="modal-box relative flex flex-row justify-center items-center gap-5" htmlFor="">
+                            <h3 className="text-lg font-bold">Are you sure?</h3>
+                            <a className="mr-3 btn btn-primary" onClick={handleLogout}>Yes, Logout</a>
+                        </label>
+                    </label>
+                </>
+            }
+            {/* } */}
         </nav>
     )
 }

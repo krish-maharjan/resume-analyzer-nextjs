@@ -3,6 +3,11 @@ import { useRouter } from 'next/router';
 import { login } from './api/authapi';
 import Link from 'next/link';
 
+import Modal from "./components/layout/modal";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+
 export default function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -10,10 +15,14 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+  const [showModal, setShowModal] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    setShowModal(true)
+
     try {
       const token = await login(username, password);
       document.cookie = `token=${token}; path=/`;
@@ -24,6 +33,12 @@ export default function LoginPage() {
       setLoading(false);
     }
   };
+
+  // for closing modal
+  const handleClose = (e) => {
+    e.preventDefault();
+    setShowModal(false);
+  }
 
   return (
     <section className="flex flex-col justify-center items-center my-16 mt-32 xl:px-52 lg:px-32 md:px-16 sm:px-10 gap-5">
@@ -43,12 +58,24 @@ export default function LoginPage() {
             <label className="text-sm input-group input-group-vertical text-brand-s"> <Link href='/register'>Not registered yet?</Link></label>
           </div>
 
-            <button type="submit" disabled={loading} className="btn btn-primary w-full">{loading ? 'Loading...' : 'Login'}</button>
+          <button type="submit" disabled={loading} className="btn btn-primary w-full">{loading ? 'logging in...' : 'Login'}</button>
 
         </form>
       </div>
 
-      {error && <p>{error}</p>}
+      {error &&
+        <Modal show={showModal}>
+          <div className="flex flex-col flex-wrap gap-2 justify-center items-center">
+            <div className="flex flex-row flex-wrap justify-center items-center gap-1">
+              <FontAwesomeIcon className='text-2xl' icon={faCircleXmark} />
+              <h1 className="text-lg">{error}</h1>
+            </div>
+            <a onClick={handleClose}>
+              <button className="btn btn-primary">try again</button>
+            </a>
+          </div>
+        </Modal>
+      }
     </section>
   );
 }

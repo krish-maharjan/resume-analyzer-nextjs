@@ -24,7 +24,7 @@ export default function Home() {
       
       <Pricing />
       
-      <Hero title='Ready to Join?' description='Fully autamated Resume Analysis helps in significantly imporving overall hiring efficiency and helps hire quality individuals in fraction of the time compared to manual process' button='Get Started' />
+      <Hero title='Ready to Join?' description='Fully automated Resume Analysis helps in significantly imporving overall hiring efficiency and helps hire quality individuals in fraction of the time compared to manual process' button='Get Started' />
 
       <Contact />
 

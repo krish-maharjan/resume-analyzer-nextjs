@@ -10,7 +10,7 @@ export default function Modal({show, children}) {
 
   const modalContent = show ? (
     <div className='fixed z-30 top-0 left-0 w-full h-full flex justify-center items-center bg-center bg-[#000] bg-opacity-75'>
-      <div className='card bg-base-100 shadow-xl min-h-fit min-w-fit p-20 gap-4'>
+      <div className='card bg-base-100 shadow-xl min-h-fit min-w-fit justify-center items-center lg:p-20 lg:gap-4'>
         <div className='card-body'>{children}</div>
       </div>
     </div>

@@ -3,7 +3,7 @@ export default function Intro() {
         <section className="flex flex-row w-full mt-12 px-16">
             <div className="flex min-h-screen min-w-full justify-center items-start">
                 <div className="flex flex-col lg:flex-row-reverse items-center">
-                    <div className="w-[50%]">
+                    <div className="w-[50%] max-h-screen">
                         <img src="/image/4.png" alt="image" className="w-full h-auto object-cover" />
                     </div>
                     <div className="w-[50%]">
