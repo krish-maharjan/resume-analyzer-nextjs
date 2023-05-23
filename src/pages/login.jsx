@@ -55,19 +55,19 @@ export default function LoginPage() {
   return (
     <section className="flex flex-col justify-center items-center my-16 xl:px-52 lg:px-32 md:px-16 sm:px-10 gap-5">
 
-      <div className="card w-full bg-slate-50 shadow-2xl backdrop-filter backdrop-blur-lg bg-opacity-30 firefox:bg-opacity-90 max-w-fit">
+      <div className="card min-w-[327px] w-full bg-slate-50 shadow-2xl backdrop-filter backdrop-blur-lg bg-opacity-30 firefox:bg-opacity-90 max-w-fit">
 
         <form onSubmit={handleSubmit} className="card-body max-w-fit flex justify-center items-center p-9">
           <h1 className="text-3xl mb-5"><strong>Login</strong></h1>
           <div>
             <label htmlFor="username" className="text-sm input-group input-group-vertical text-black">Username:</label>
-            <input type="username" id="username" value={username} onChange={(e) => setUsername(e.target.value)} className="input input-bordered w-full max-w-xs text-black" />
+            <input type="username" id="username" value={username} onChange={(e) => setUsername(e.target.value)} className="input input-bordered w-full text-black" />
           </div>
 
           <div>
             <label htmlFor="password" className="text-sm input-group input-group-vertical text-black">Password:</label>
-            <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} className="input input-bordered w-full max-w-xs text-black" />
-            {/* <label className="text-sm input-group input-group-vertical text-brand-s"> <Link href='/register'>Not registered yet?</Link></label> */}
+            <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} className="input input-bordered w-full text-black" />
+            <label className="text-sm input-group input-group-vertical text-brand-s"> <Link href='/register'><u>Not registered yet?</u></Link></label>
           </div>
 
           <button type="submit" disabled={loading} className="btn btn-primary w-full">{loading ? 'logging in...' : 'Login'}</button>

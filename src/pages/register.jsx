@@ -27,7 +27,7 @@ export default function RegisterPage() {
   return (
     <section className="flex flex-col justify-center items-center my-16 xl:px-52 lg:px-32 md:px-16 sm:px-10 min-w-[23rem] gap-5">
 
-      <div className="card w-full bg-slate-50 shadow-2xl backdrop-filter backdrop-blur-lg bg-opacity-30 firefox:bg-opacity-90 max-w-fit">
+      <div className="card min-w-[327px] w-full bg-slate-50 shadow-2xl backdrop-filter backdrop-blur-lg bg-opacity-30 firefox:bg-opacity-90 max-w-fit">
 
         <form onSubmit={handleSubmit} className="card-body max-w-fit flex justify-center items-center p-9">
           <h1 className="text-3xl mb-5"><strong>Register</strong></h1>
