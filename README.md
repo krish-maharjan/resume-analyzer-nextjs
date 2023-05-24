@@ -1,10 +1,9 @@
-This project uses API from /krishmzn/resume-analyzer-django-api
-The deployed branch is already connected with the backend api and if you want to try it out on your local machine you can use the main branch.
+This project uses API from /krishmzn/resume-analyzer-django-api. The deployed branch is already connected with the backend api and if you want to try it out on your local machine you can use the main branch.
 
-## Preview the live site deployed in github pages:
+## Your can either, Preview the live site deployed in github pages:
 https://krishmzn.github.io/resume-analyzer-nextjs/
 
-## Getting Started
+## Or, Getting Started Locally:
 
 Firstly, run this command on the api side.
 here's django api repo
