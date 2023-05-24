@@ -99,7 +99,7 @@ export default function Nav(context) {
                         </li>
                     ) : (
                         <Link href='/login' className="btn btn-primary">
-                            Login
+                            Login/ Register
                         </Link>
                     )}
                 </ul>
