@@ -61,12 +61,12 @@ export default function LoginPage() {
           <h1 className="text-3xl mb-5"><strong>Login</strong></h1>
           <div>
             <label htmlFor="username" className="text-sm input-group input-group-vertical text-black">Username:</label>
-            <input type="username" id="username" value={username} onChange={(e) => setUsername(e.target.value)} className="input input-bordered w-full text-black" />
+            <input type="username" id="username" value={username} required onChange={(e) => setUsername(e.target.value)} className="input input-bordered w-full text-black" />
           </div>
 
           <div>
             <label htmlFor="password" className="text-sm input-group input-group-vertical text-black">Password:</label>
-            <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} className="input input-bordered w-full text-black" />
+            <input type="password" id="password" value={password} required onChange={(e) => setPassword(e.target.value)} className="input input-bordered w-full text-black" />
             <label className="text-sm input-group input-group-vertical text-brand-s"> <Link href='/register'><u>Not registered yet?</u></Link></label>
           </div>
 
