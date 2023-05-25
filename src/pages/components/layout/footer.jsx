@@ -1,7 +1,7 @@
 export default function Footer() {
     return (
         <footer>
-            <footer className="footer min-h-[60vh] p-10 bg-base-200 text-base-content">
+            <footer className="footer p-10 bg-base-200 text-base-content">
                 <div>
                     <p>Resume Analyzer<br />Innovative solutions since 2022</p>
                 </div>
