@@ -17,7 +17,7 @@ export default function RegisterPage() {
     try {
       const token = await register(email, username, password);
       document.cookie = `token=${token}; path=/`;
-      router.push('/login'); // Redirect to the home page after successful register
+      router.push('/resume'); // Redirect to the home page after successful register
     } catch (err) {
       setError(err.message);
       setLoading(false);
@@ -34,17 +34,17 @@ export default function RegisterPage() {
 
           <div>
             <label htmlFor="email" className="text-sm input-group input-group-vertical text-black">Email:</label>
-            <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} className="input input-bordered w-full max-w-xs text-black" />
+            <input type="email" id="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="input input-bordered w-full max-w-xs text-black" />
           </div>
 
           <div>
             <label htmlFor="username" className="text-sm input-group input-group-vertical text-black">Username:</label>
-            <input type="username" id="username" value={username} onChange={(e) => setUsername(e.target.value)} className="input input-bordered w-full max-w-xs text-black" />
+            <input type="username" id="username" required value={username} onChange={(e) => setUsername(e.target.value)} className="input input-bordered w-full max-w-xs text-black" />
           </div>
 
           <div>
             <label htmlFor="password" className="text-sm input-group input-group-vertical text-black">Password:</label>
-            <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} className="input input-bordered w-full max-w-xs text-black" />
+            <input type="password" id="password" required value={password} onChange={(e) => setPassword(e.target.value)} className="input input-bordered w-full max-w-xs text-black" />
           </div>
 
             <button type="submit" disabled={loading} className="btn btn-primary w-full">{loading ? 'Loading...' : 'Register'}</button>
