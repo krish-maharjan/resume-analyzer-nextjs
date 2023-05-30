@@ -1,7 +1,12 @@
-This project uses API from /krishmzn/resume-analyzer-django-api. The deployed branch is already connected with the backend api and if you want to try it out on your local machine you can use the main branch.
+#### Resume Analyzer makes the tedious task of resume screening easy for recruiters by automatically analysing and scoring the resumes on the basis of its match with the job description.
+
+## Try it right now,
+https://krish-resume-analyzer.vercel.app/
+
+#### This project uses API from /krishmzn/resume-analyzer-django-api. The deployed branch is already connected with the backend django api which is also deployed and if you want to try it out on your local machine you can use the main branch.
 
 ## Your can either, Preview the live site deployed in github pages:
-https://krishmzn.github.io/resume-analyzer-nextjs/
+https://krish-resume-analyzer.vercel.app/
 
 ## Or, Getting Started Locally:
 
@@ -27,3 +32,14 @@ Open [http://localhost:3000/resume] with your browser to see the result.
 
 Create new user through register page [http://localhost:3000/register]
 And login to access the resume analyzer at [http://localhost:3000/resume]
+
+
+## Navigating the site:
+
+#### Clicking on the website URL [https://krish-resume-analyzer.vercel.app/] and clicking on 'Take me to resume analzyer' pointed by arror OR, simply going to [https://krish-resume-analyzer.vercel.app/resume] will take you to the resume analyzer page
+#### If you havent created a user until now, you can easily create one by clicking on 'Not registered yet?'
+#### Further instructions for using resume analyzer is in the Resume Analyzer page itself
+#### Now you can easily login and use Resume Analyzer
+#### For now the resume analyzer django api only supports .pdf and I am working to provide support for other file types too
+
+Have a Good Day!
