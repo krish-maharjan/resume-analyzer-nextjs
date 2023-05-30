@@ -200,7 +200,7 @@ export default function Resume() {
   }
 
   return (
-    <section className="flex flex-col justify-center items-center mt-40 xl:px-52 lg:px-32 md:px-16 sm:px-10 gap-5">
+    <section className="flex flex-col justify-center items-center mt-32 xl:px-52 lg:px-32 md:px-16 sm:px-10 gap-5">
       <div className="flex flex-col items-center my-10 gap-11">
         <h1 className="text-3xl font-extrabold">Resume Analyzer</h1>
         <div>
@@ -258,8 +258,9 @@ export default function Resume() {
 
           </div>
           <div className="my-3">
-            <label htmlFor="rdoc" className="input-group input-group-vertical text-black">Upload Resume*</label>
-            <input className="file-input file-input-bordered w-full max-w-xs" type="file" id="rdoc" name="rdoc" required multiple onChange={handleFileChange} />
+            <label htmlFor="rdoc" className="input-group input-group-vertical">Upload Resume*</label>
+            <input className="file-input file-input-bordered w-full max-w-xs" type="file" id="rdoc" name="rdoc" required multiple accept=".pdf" onChange={handleFileChange} />
+            <p>(Please upload pdf file type only, support for other file types is in progress)</p>
           </div>
           <button type="submit" className="btn btn-primary  btn-active btn-xs sm:btn-sm md:btn-md lg:btn-lg" htmlFor="my-modal-6">Start Analysis</button>
           <Modal show={showModal}>

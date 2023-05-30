@@ -98,7 +98,7 @@ export default function Nav(context) {
                             </ul>
                         </li>
                     ) : (
-                        <Link href='/login' className="btn btn-primary">
+                        <Link href='/login' className="btn">
                             Login/ Register
                         </Link>
                     )}
