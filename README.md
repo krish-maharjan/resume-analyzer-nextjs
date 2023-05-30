@@ -5,7 +5,7 @@ https://krish-resume-analyzer.vercel.app/
 
 This project uses API from /krishmzn/resume-analyzer-django-api. The deployed branch is already connected with the backend django api which is also deployed and if you want to try it out on your local machine you can use the main branch.
 
-## Your can either, Preview the live site deployed in github pages:
+## Your can either, Preview the live site deployed in Vercel:
 https://krish-resume-analyzer.vercel.app/
 
 ## Or, Get Started Locally:
