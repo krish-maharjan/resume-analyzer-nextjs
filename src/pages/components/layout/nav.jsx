@@ -78,7 +78,7 @@ export default function Nav(context) {
                         </a>
                         <ul className="p-2 bg-neutral-200">
                             <li><a>Business Automation</a></li>
-                            <li><a>Resume Analysis</a></li>
+                            <li><Link href='/resume'>Resume Analysis</Link></li>
                         </ul>
                     </li>
                     <li><a>About</a></li>

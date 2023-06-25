@@ -7,7 +7,7 @@ export default function Hero({title, description, button}) {
                     <div className="max-w-md">
                         <h1 className="mb-5 text-5xl font-bold">{title}</h1>
                         <p className="mb-5">{description}</p>
-                        <button className="btn btn-outline btn-accent hover:text">Button</button>
+                        <button className="btn btn-outline btn-accent hover:text">{button}</button>
                     </div>
                 </div>
             </div>
