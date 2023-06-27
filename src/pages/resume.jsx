@@ -260,7 +260,7 @@ export default function Resume() {
           <div className="my-3">
             <label htmlFor="rdoc" className="input-group input-group-vertical">Upload Resume*</label>
             <input className="file-input file-input-bordered w-full max-w-xs" type="file" id="rdoc" name="rdoc" required multiple accept=".pdf, .docx" onChange={handleFileChange} />
-            <p>(Please upload pdf file type only, support for other file types is in progress)</p>
+            <p>(select resumes clicking on choose files)</p>
           </div>
           <button type="submit" className="btn btn-primary  btn-active btn-xs sm:btn-sm md:btn-md lg:btn-lg" htmlFor="my-modal-6">Start Analysis</button>
           <Modal show={showModal}>
