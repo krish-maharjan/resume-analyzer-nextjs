@@ -15,6 +15,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "autoprefixer": "10.4.14",
     "daisyui": "^2.51.5",
+    "framer-motion": "^10.12.17",
     "js-cookie": "^3.0.5",
     "keyword-extractor": "^0.0.25",
     "natural": "^6.2.0",
