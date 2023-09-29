@@ -15,8 +15,8 @@ export default function Intro() {
                         <p className="text-center">Start for free!!!</p><br />
                         <div className="form-control">
                             <div>
-                                <button className="btn btn-outline btn-primary"><Link href='https://github.com/krishmzn/resume-analyzer-nextjs'>View source code</Link></button>
-                                <button className="btn btn-primary"><Link href='/resume'>Start Analyzing</Link></button>
+                                <button className="btn btn-outline btn-primary rounded-none"><Link href='https://github.com/krishmzn/resume-analyzer-nextjs'>View source code</Link></button>
+                                <button className="btn btn-primary rounded-none"><Link href='/resume'>Start Analyzing</Link></button>
                             </div>
                         </div>
                     </main>
