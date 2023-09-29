@@ -31,7 +31,7 @@ export default function Card() {
 
             <div className="flex flex-row flex-wrap items-center justify-center gap-11 ">
                 {Object.entries(cards).map(([key, values]) => (
-                    <div className="card lg:w-64 w-72 h-80 2xl:w-96 bg-base-100 shadow-xl">
+                    <div className="card lg:w-64 w-72 h-80 2xl:w-96 bg-base-100 cursor-pointer shadow hover:shadow-2xl transition-transform hover:scale-105">
                         <figure><img src={values[2].img} alt={values[3].alttxt} /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{values[0].title}</h2>
