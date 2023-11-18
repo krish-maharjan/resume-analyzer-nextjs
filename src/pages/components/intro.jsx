@@ -14,11 +14,9 @@ export default function Intro() {
                         <h2 className="pt-2 text-xl text-center">Optimize Your Efficiency</h2>
                         <h2 className="pb-8 text-xl text-center">Streamline Resume and CV Analysis with Resume Analyzer</h2>
                         {/* <p className="text-center">Start for free!!!</p><br /> */}
-                        <div className="form-control">
-                            <div>
-                                <button className="btn btn-outline btn-primary rounded-none"><Link href='https://github.com/krishmzn/resume-analyzer-nextjs'>View source code</Link></button>
-                                <button className="btn btn-primary rounded-none"><Link href='/resume'>Start Analyzing For Free!!!</Link></button>
-                            </div>
+                        <div className="flex flex-col sm:flex-row">
+                            <button className="btn btn-outline btn-primary rounded-none"><Link href='https://github.com/krishmzn/resume-analyzer-nextjs'>View source code</Link></button>
+                            <button className="btn btn-primary rounded-none"><Link href='/resume'>Start Analyzing For Free!!!</Link></button>
                         </div>
                     </main>
                 </div>
