@@ -37,8 +37,10 @@ export default function LoginPage() {
 
     try {
       const token = await login(username, password);
-      document.cookie = `token=${token}; path=/`;
-      document.cookie = `username=${username}; path=/`;
+
+      document.cookie = `token=${token}; Max-Age=31536000; path=/;`;
+      document.cookie = `username=${username}; Max-Age=31536000; path=/;`;
+
       router.push('/resume'); // Redirect to the home page after successful login
     } catch (err) {
       setError(err.message);
