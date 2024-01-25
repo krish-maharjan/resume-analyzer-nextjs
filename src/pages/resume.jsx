@@ -200,11 +200,11 @@ export default function Resume() {
   }
 
   return (
-    <section className="flex flex-col justify-center items-center mt-32 xl:px-52 lg:px-32 md:px-16 sm:px-10 gap-5">
-      <div className="flex flex-col items-center my-10 gap-11">
+    <section className="flex flex-col justify-center items-center mt-5 xl:px-52 lg:px-32 md:px-16 sm:px-10 gap-5">
+      <div className="flex flex-col items-center my-10 gap-2">
         <h1 className="text-3xl font-extrabold">Resume Analyzer</h1>
         <div>
-          <p className="mb-3">3-step process to analyze resumes</p>
+          {/* <p className="mb-3">3-step process to analyze resumes</p>
           <ul className="flex flex-col gap-1">
             <li>
               <strong>Step 1: </strong> input 'Job Description' or 'Keywords'</li>
@@ -212,7 +212,14 @@ export default function Resume() {
               <strong>Step 2: </strong>Upload resumes by clicking on 'CHOOSE FILES'</li>
             <li>
               <strong>Step 3: </strong>If you're satisfied with the keywords and the resumes provided click on 'START ANALYSIS', This will start analyzing the resumes and will tell you when analysis is completed</li>
-          </ul>
+          </ul> */}
+        </div>
+
+        <div className="relative w-full backdrop-blur-3xl shadow-[rgba(0,_0,_0,_0.2)_0px_60px_40px_-7px] rounded-lg">
+          <p className="mb-3 text-center">Here's a quick demo to get started</p>
+          <video src="./resume-analyzer-video.mp4" autoPlay loop muted className="rounded-md"></video>
+          <div className="bg-[#4b6bfb40] opacity-10 h-full w-full absolute top-0 left-0 rounded-lg"></div>
+          <p className="mb-3"> </p>
         </div>
       </div>
 
@@ -262,7 +269,7 @@ export default function Resume() {
             <input className="file-input file-input-bordered w-full max-w-xs" type="file" id="rdoc" name="rdoc" required multiple accept=".pdf, .docx" onChange={handleFileChange} />
             <p>(select resumes clicking on choose files)</p>
           </div>
-          <button type="submit" className="btn btn-primary  btn-active btn-xs sm:btn-sm md:btn-md lg:btn-lg" htmlFor="my-modal-6">Start Analysis</button>
+          <button type="submit" className="btn btn-primary btn-xs sm:btn-sm md:btn-md lg:btn-lg" htmlFor="my-modal-6">Start Analysis</button>
           <Modal show={showModal}>
             {
               processingStatus == false

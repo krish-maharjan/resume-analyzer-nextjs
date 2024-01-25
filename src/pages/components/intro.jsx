@@ -3,23 +3,22 @@ import '@component/styles/second.module.css'
 
 export default function Intro() {
     return (
-        <section className="flex flex-row w-full pt-0 mb-0">
-            <div className="flex min-h-screen min-w-full justify-center items-start">
-                <div className="flex items-center">
-                    <div className="relative max-w-full">
-                        <img src="./image/figma.png" alt="image" className="min-w-[100vw] min-h-screen max-h-screen object-cover" />
-                    </div>
-                    <main className="absolute min-w-[100vw] h-screen flex justify-center items-center flex-col px-6 gap-0">
-                        <h1 className="text-6xl font-black text-center">Resume Analyzer</h1>
-                        <h2 className="pt-2 text-xl text-center">Optimize Your Efficiency</h2>
-                        <h2 className="pb-8 text-xl text-center">Streamline Resume and CV Analysis with Resume Analyzer</h2>
-                        {/* <p className="text-center">Start for free!!!</p><br /> */}
-                        <div className="flex flex-col sm:flex-row">
-                            <button className="btn btn-outline btn-primary rounded-none"><Link href='https://github.com/krishmzn/resume-analyzer-nextjs'>View source code</Link></button>
-                            <button className="btn btn-primary rounded-none"><Link href='/resume'>Start Analyzing For Free!!!</Link></button>
-                        </div>
-                    </main>
-                </div>
+        <section className="flex md:flex-row flex-nowrap justify-center items-center gap-9 min-h-[100vh]  max-w-9xl m-auto bg-[#8ca7dd]">
+            <div className="flex flex-col gap-3">
+                <h3 className="text-5xl tracking-tighter font-extrabold text-neutral-50">Resume Analyzer</h3>
+                <p className="text-sm text-neutral-100">
+                    Optimize Your Efficiency
+                    Streamline Resume and CV Analysis with Resume Analyzer
+                </p>
+                <Link href='/resume' className="btn btn-primary rounded-none shadow-2xl">
+                    <button>
+                        Start for free
+                    </button>
+                </Link>
+            </div>
+            <div className="relative md:w-7/12 backdrop-blur-3xl shadow-[rgba(0,_0,_0,_0.2)_0px_60px_40px_-7px] rounded-lg">
+                <video src="./resume-analyzer-video.mp4" autoPlay loop muted className="rounded-lg"></video>
+                <div className="bg-[#4b6bfb40] opacity-10 h-full w-full absolute top-0 left-0 rounded-lg"></div>
             </div>
         </section>
     )

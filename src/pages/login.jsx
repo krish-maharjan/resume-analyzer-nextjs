@@ -55,7 +55,7 @@ export default function LoginPage() {
   }
 
   return (
-    <section className="flex flex-col justify-center items-center my-16 xl:px-52 lg:px-32 md:px-16 sm:px-10 gap-5 mt-28">
+    <section className="flex flex-col justify-center items-center h-screen">
 
       <div className="card min-w-[327px] w-full bg-slate-50 justify-center items-center shadow-2xl backdrop-filter backdrop-blur-lg bg-opacity-30 firefox:bg-opacity-90 max-w-fit">
 
