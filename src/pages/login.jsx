@@ -55,21 +55,20 @@ export default function LoginPage() {
   }
 
   return (
-    <section className="flex flex-col justify-center items-center h-screen">
-
+    <section className="flex flex-col justify-center items-center h-[90vh] mb-0">
       <div className="card min-w-[327px] w-full bg-slate-50 justify-center items-center shadow-2xl backdrop-filter backdrop-blur-lg bg-opacity-30 firefox:bg-opacity-90 max-w-fit">
 
         <form onSubmit={handleSubmit} className="card-body max-w-fit flex justify-center items-center p-9">
-          <h1 className="text-3xl mb-5"><strong>Login</strong></h1>
+          <h1 className="drop-shadow-2xl text-3xl mb-5 tracking-tighter font-bold"><strong>login</strong></h1>
           <div>
-            <label htmlFor="username" className="text-sm input-group input-group-vertical text-black">Username:</label>
-            <input type="username" id="username" value={username} required onChange={(e) => setUsername(e.target.value)} className="input input-bordered w-full text-black" />
+            <label htmlFor="username" className="drop-shadow-2xl text-sm input-group input-group-vertical text-black tracking-wider">Username:</label>
+            <input type="username" id="username" placeholder='test' value={username} required onChange={(e) => setUsername(e.target.value)} className="input input-bordered w-full text-black" />
           </div>
 
           <div>
-            <label htmlFor="password" className="text-sm input-group input-group-vertical text-black">Password:</label>
-            <input type="password" id="password" value={password} required onChange={(e) => setPassword(e.target.value)} className="input input-bordered w-full text-black" />
-            <label className="text-sm input-group input-group-vertical text-brand-s"> <Link href='/register'><u>Not registered yet?</u></Link></label>
+            <label htmlFor="password" className="drop-shadow-2xl text-sm input-group input-group-vertical text-black tracking-wider">Password:</label>
+            <input type="password" id="password" placeholder='test' value={password} required onChange={(e) => setPassword(e.target.value)} className="input input-bordered w-full text-black" />
+            <label className="drop-shadow-2xl text-sm input-group input-group-vertical text-brand-s mt-1"> <Link href='/register'><u>Not registered yet?</u></Link></label>
           </div>
 
           <button type="submit" disabled={loading} className="btn btn-primary w-full">{loading ? 'logging in...' : 'Login'}</button>
@@ -82,7 +81,7 @@ export default function LoginPage() {
           <div className="flex flex-col flex-wrap gap-2 justify-center items-center">
             <div className="flex flex-row flex-wrap justify-center items-center gap-1">
               <FontAwesomeIcon className='text-2xl' icon={faCircleXmark} />
-              <h1 className="text-lg">{error}</h1>
+              <h1 className="drop-shadow-2xl text-lg">{error}</h1>
             </div>
             <a onClick={handleClose}>
               <button className="btn btn-primary">try again</button>
@@ -90,6 +89,9 @@ export default function LoginPage() {
           </div>
         </Modal>
       }
+
+      <p className="drop-shadow-2xl text-center text-base md:text-xl lg:text-3xl mt-7 md:mt-20 lg:mt-32 bg-info px-7 text-neutral-50 tracking-wide">Use the username and password in placeholder</p>
+
     </section>
   );
 }

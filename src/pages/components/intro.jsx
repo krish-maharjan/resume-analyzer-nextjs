@@ -3,7 +3,8 @@ import '@component/styles/second.module.css'
 
 export default function Intro() {
     return (
-        <section className="flex md:flex-row flex-nowrap justify-center items-center gap-9 min-h-[100vh]  max-w-9xl m-auto bg-[#8ca7dd]">
+        // <section className="flex md:flex-row flex-nowrap justify-center items-center gap-9 min-h-[100vh]  max-w-9xl m-auto bg-[#8ca7dd]">
+        <section className="flex md:flex-row flex-nowrap gap justify-center md:justify-evenly items-center min-h-[90vh] w-full mb-0 bg-[#8ca7dd]">
             <div className="flex flex-col gap-3">
                 <h3 className="text-5xl tracking-tighter font-extrabold text-neutral-50">Resume Analyzer</h3>
                 <p className="text-sm text-neutral-100">
